@@ -6,6 +6,10 @@ var app = express();
 
 // creating middleware
 
+//todo process.env.PORT
+
+var PORT = process.env.PORT || 3000;
+
 var middleware = {
   requireAuthentication: function(req, res, next) {
     console.log("private route hit !");
@@ -24,4 +28,4 @@ app.get('/about',middleware.requireAuthentication, function(req, res) {
 });
 app.use(express.static('public')); // exposes public folders
 //app.use(express.static(__dirname+'/public'));
-app.listen(3000);
+app.listen(PORT);
